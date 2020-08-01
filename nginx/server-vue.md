@@ -1,6 +1,5 @@
 
-# Nginx + Quasar Spa
-  
+# Nginx + Vue
 Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 
 Lista de paquetes instalados:
@@ -8,7 +7,6 @@ Lista de paquetes instalados:
 - node.js
 - npm
 - vue
-- quasar
 - nano
 - htop
 - wget
@@ -68,10 +66,10 @@ Lista de paquetes instalados:
 	    ```
         SELinux status: disabled
         ```
-4. Install Quasar
+4. Install Vue
 
     ```
-    npm install -g @quasar/cli
+    npm install -g @vue/cli
     ```
 
 8. Install SSL Letsencrypt [Source Guide](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
@@ -95,8 +93,8 @@ Lista de paquetes instalados:
         ```
 ## Config
 3. Config nginx
-    - [Global Config](resources/nginx.conf)
-    - [Example Nginx Config](resources/ngnix-example-vue-conf.md)
+    - [Global Config](../resources/nginx.conf)
+    - [Example Nginx Config](../resources/ngnix-example-vue-conf.md)
 ## Notes
 - Esta configuración esta pensada de manera general pero es mejor optimizar según los casos
 - Default Nginx Directory

@@ -1,13 +1,14 @@
 
-# Nginx + PHP
+# Nginx + Quasar Spa
   
 Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 
 Lista de paquetes instalados:
 - nginx
-- php
-- composer
+- node.js
 - npm
+- vue
+- quasar
 - nano
 - htop
 - wget
@@ -67,85 +68,11 @@ Lista de paquetes instalados:
 	    ```
         SELinux status: disabled
         ```
-4. Install FPM Complements
-	1. Download Pacakages
-		```
-		wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-		yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
-		```
-	2. Install remi-release package
-		```
-		rpm -Uvh remi-release-7.rpm
-		```
-	3. Install yum-utils package
-		```
-		yum install yum-utils -y
-		```
-5. Install PHP-FPM 7.4
-	```
-	yum search yum-config-manager
-	```
-	```
-	yum-config-manager --enable remi-php74
-	```
-	```
-	yum --enablerepo=remi,remi-php71 install php-fpm php-common
-	```
-	Install PHP packages
-	```
-	yum --enablerepo=remi,remi-php74 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-intl php-json php-gettext php-curl php-date php-sqlite3 php-mysqli php-openssl php-zip
-	```
-	Replace default apache config `/etc/php-fpm.d/www.conf`:
-	
-   ``` 
-   nano /etc/php-fpm.d/www.conf 
-   ```
-		
-   ```
-	user = nginx
-	group = nginx
-	listen = /var/run/php-fpm/php-fpm.sock
-	listen.owner = nginx
-	listen.group = nginx
-   ```
-6. Restart PHP
-	```
-	systemctl start php-fpm.service; systemctl enable php-fpm.service
-	```
-7. Install Composer
-    1. Once PHP CLI is installed, download the Composer installer script with:
-        ```
-        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        ```
-    2. To verify the data integrity
-        ```
-        HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
-        ```
-    3. To verify that the installation script is not corrupted run the following command:
-        ```
-        php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-        ```
-        If the hashes match, the following message will be shown:
+4. Install Quasar
 
-        ```
-        Installer verified
-        ```
-    4. Run the following command to install Composer in the /usr/local/bin directory:
-        ```
-        sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-        ```
-        The composer is installed as a system-wide command and it will be available for all users.
-        ```
-        All settings correct for using Composer
-        Downloading...
-
-        Composer (version 1.8.5) successfully installed to: /usr/local/bin/composer
-        Use it: php /usr/local/bin/composer
-        ```
-    5. The last step is to verify the installation:
-        ```
-        composer
-        ```
+    ```
+    npm install -g @quasar/cli
+    ```
 
 8. Install SSL Letsencrypt [Source Guide](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
     1. Install Certbot
@@ -167,22 +94,15 @@ Lista de paquetes instalados:
         echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
         ```
 ## Config
-1. Change permissions session folder to enable session writing in PHP
-	```
-	chown -R nginx:nginx /var/lib/php/session
-	```
-2. Replace [php.ini](../resources/php-prod.ini)
-
 3. Config nginx
     - [Global Config](../resources/nginx.conf)
-    - [Example Nginx Config](../resources/ngnix-example-conf.md)
+    - [Example Nginx Config](../resources/ngnix-example-vue-conf.md)
 ## Notes
 - Esta configuración esta pensada de manera general pero es mejor optimizar según los casos
 - Default Nginx Directory
     ```
     /usr/share/nginx/html
     ```
-
 ## Contributing
   
 - Abel Rodríguez [@gniuslab](https://github.com/gniuslab)
