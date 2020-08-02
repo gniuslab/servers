@@ -96,7 +96,7 @@ Lista de paquetes instalados:
 ## Config
 3. Config nginx
     - [Global Config](../resources/nginx.conf)
-    - [Example Nginx Config](../resources/ngnix-example-vue-conf.md)
+    - [Example Nginx Config](../resources/ngnix-example-quasar-conf.md)
 ## Notes
 - Esta configuración esta pensada de manera general pero es mejor optimizar según los casos
 - Default Nginx Directory
