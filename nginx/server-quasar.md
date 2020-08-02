@@ -106,4 +106,4 @@ Lista de paquetes instalados:
 ## Contributing
   
 - Abel Rodríguez [@gniuslab](https://github.com/gniuslab)
-- Juan de León (@juanrdlo)(https://github.com/juanrdlo)
+- Juan de León [@juanrdlo](https://github.com/juanrdlo)
