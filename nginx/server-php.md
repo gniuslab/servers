@@ -178,6 +178,7 @@ Lista de paquetes instalados:
     - [Example Nginx Config](../resources/ngnix-example-conf.md)
 ## Notes
 - Esta configuración esta pensada de manera general pero es mejor optimizar según los casos
+- Se recomienda crear un archivo de configuración nuevo en la ruta: `/etc/nginx/conf.d/example.com.conf`
 - Default Nginx Directory
     ```
     /usr/share/nginx/html

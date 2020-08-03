@@ -1,6 +1,6 @@
-# Ngnix Config default.conf
+# Ngnix Config example.conf
 
-1. Edit default.conf file `nano /etc/nginx/conf.d/default.conf`:
+1. Edit example.conf file `nano /etc/nginx/conf.d/example.conf`:
 
     ```
     server {
