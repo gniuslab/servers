@@ -69,7 +69,7 @@ Lista de paquetes instalados:
 4. Install Vue
 
     ```
-    npm install -g @vue/cli
+    npm install -g @vue/cli -y
     ```
 
 8. Install SSL Letsencrypt [Source Guide](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
@@ -77,7 +77,7 @@ Lista de paquetes instalados:
     Run this command on the command line on the machine to install Certbot.
 
         ``` 
-        sudo yum install certbot python2-certbot-nginx 
+        sudo yum install certbot python2-certbot-nginx  -y
         ```
     2. Install your certificates...
     Run this command to get a certificate and have Certbot edit your Nginx configuration automatically to serve it, turning on HTTPS access in a single step.
@@ -91,6 +91,28 @@ Lista de paquetes instalados:
         ```
         echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
         ```
+9. Add new user deploy
+	- Add new user
+		```
+		add user deploy
+		```
+	- Set Password
+		```
+		passwd deploy
+		```
+	- Configurar el servicio de ssh para que el acceso a root no este habilitado
+		```
+		nano /etc/ssh/sshd_config
+		```
+		Descomentar la linea:
+		```
+		PermitRootLogin no
+		```
+		Restart Service
+		```
+		service sshd restart
+		```
+
 ## Config
 3. Config nginx
     - [Global Config](../resources/nginx.conf)
@@ -101,6 +123,10 @@ Lista de paquetes instalados:
 - Default Nginx Directory
     ```
     /usr/share/nginx/html
+    ```
+- Create site directory
+	```
+    mkdir /usr/share/nginx/html/site
     ```
 ## Contributing
   

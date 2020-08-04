@@ -7,7 +7,7 @@
         listen       80;
         server_name example.com;
 
-        root /usr/share/nginx/html/dist/spa;
+        root /usr/share/nginx/html/site/dist/spa;
 
         add_header X-Frame-Options "SAMEORIGIN";
         add_header X-XSS-Protection "1; mode=block";

@@ -166,6 +166,28 @@ Lista de paquetes instalados:
         ```
         echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
         ```
+9. Add new user deploy
+	- Add new user
+		```
+		add user deploy
+		```
+	- Set Password
+		```
+		passwd deploy
+		```
+	- Configurar el servicio de ssh para que el acceso a root no este habilitado
+		```
+		nano /etc/ssh/sshd_config
+		```
+		Descomentar la linea:
+		```
+		PermitRootLogin no
+		```
+		Restart SSH Service
+		```
+		service sshd restart
+		```
+
 ## Config
 1. Change permissions session folder to enable session writing in PHP
 	```
@@ -174,16 +196,29 @@ Lista de paquetes instalados:
 2. Replace [php.ini](../resources/php-prod.ini)
 
 3. Config nginx
+	Config Route
     - [Global Config](../resources/nginx.conf)
+		```
+		nano /etc/nginx/nginx.conf
+		```
     - [Example Nginx Config](../resources/ngnix-example-conf.md)
+		```
+		nano /etc/nginx/conf.d/example.com.conf
+		```
 ## Notes
 - Esta configuración esta pensada de manera general pero es mejor optimizar según los casos
-- Se recomienda crear un archivo de configuración nuevo en la ruta: `/etc/nginx/conf.d/example.com.conf`
 - Default Nginx Directory
     ```
     /usr/share/nginx/html
     ```
-
+- Create site directory
+	```
+    mkdir /usr/share/nginx/html/site
+    ```
+- Add permissions
+	```
+    chmod -R 775 /usr/share/nginx/html/site
+    ```
 ## Contributing
   
 - Abel Rodríguez [@gniuslab](https://github.com/gniuslab)
