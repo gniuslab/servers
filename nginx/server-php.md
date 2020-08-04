@@ -93,7 +93,7 @@ Lista de paquetes instalados:
 	```
 	Install PHP packages
 	```
-	yum --enablerepo=remi,remi-php74 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-intl php-json php-gettext php-curl php-date php-sqlite3 php-mysqli php-openssl php-zip
+	yum --enablerepo=remi,remi-php74 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-intl php-json php-gettext php-curl php-date php-sqlite3 php-mysqli php-openssl php-zip -y
 	```
 	Replace default apache config `/etc/php-fpm.d/www.conf`:
 	
