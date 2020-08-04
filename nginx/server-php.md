@@ -152,7 +152,7 @@ Lista de paquetes instalados:
     Run this command on the command line on the machine to install Certbot.
 
         ``` 
-        sudo yum install certbot python2-certbot-nginx 
+        sudo yum install certbot python2-certbot-nginx -y
         ```
     2. Install your certificates...
     Run this command to get a certificate and have Certbot edit your Nginx configuration automatically to serve it, turning on HTTPS access in a single step.
