@@ -89,7 +89,7 @@ Lista de paquetes instalados:
 	yum-config-manager --enable remi-php74
 	```
 	```
-	yum --enablerepo=remi,remi-php71 install php-fpm php-common
+	yum --enablerepo=remi,remi-php74 install php-fpm php-common -y
 	```
 	Install PHP packages
 	```
