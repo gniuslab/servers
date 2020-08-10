@@ -94,7 +94,7 @@ Lista de paquetes instalados:
 9. Add new user deploy
 	- Add new user
 		```
-		add user deploy
+		adduser deploy
 		```
 	- Set Password
 		```
