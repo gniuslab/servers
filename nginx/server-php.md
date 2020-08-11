@@ -2,18 +2,6 @@
 # Nginx + PHP
   
 Instalación y configuración de servidor ngnix de prueba y producción CentOS.
-
-Lista de paquetes instalados:
-- nginx
-- php
-- composer
-- npm
-- nano
-- htop
-- wget
-- epel-release
-- certbot
-- git
   
 ## Content Table
 

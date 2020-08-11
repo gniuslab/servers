@@ -1,18 +1,6 @@
 
 # Nginx + Vue
 Instalación y configuración de servidor ngnix de prueba y producción CentOS.
-
-Lista de paquetes instalados:
-- nginx
-- node.js
-- npm
-- vue
-- nano
-- htop
-- wget
-- epel-release
-- certbot
-- git
   
 ## Content Table
 

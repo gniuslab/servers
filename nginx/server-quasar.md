@@ -2,19 +2,6 @@
 # Nginx + Quasar Spa
   
 Instalación y configuración de servidor ngnix de prueba y producción CentOS.
-
-Lista de paquetes instalados:
-- nginx
-- node.js
-- npm
-- vue
-- quasar
-- nano
-- htop
-- wget
-- epel-release
-- certbot
-- git
   
 ## Content Table
 
