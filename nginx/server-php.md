@@ -20,14 +20,18 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 		```
 
 	2. Add the following settings to the file:
+
 		```
 		ONBOOT=yes
 		DHCP=static
 		```
+
 	3. Restarting the network interface
+
 		```
 		ifup eth0
 		```
+
 2. Disable Firewall
 	1. First, stop the FirewallD service with
 
@@ -40,7 +44,7 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 	```
 	sudo systemctl disable firewalld
 	```
-	
+
 	3. Mask the FirewallD service which will prevent the firewall from being started by other services:
 
 	````
@@ -48,9 +52,11 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 	```
 
 1. Actualización del servidor
+
 	```
 	yum update -y; yum install nano -y; yum install wget -y; yum install epel-release -y; yum install htop -y; yum install git -y; yum install nodejs -y; yum install unzip -y
 	```
+
 2. Open port 80 to nginx
 
 	```
@@ -62,9 +68,11 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 	```
 
 4. Install Nginx - Start, Add & Restart
+
 	```
 	yum install nginx -y; systemctl start nginx.service; systemctl enable nginx; systemctl restart nginx.service
 	```
+	
 5. Disable SELINUX
 	1.  Open the  `/etc/selinux/config`:
 	    ``` nano /etc/selinux/config ```
