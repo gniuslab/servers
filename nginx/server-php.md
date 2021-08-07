@@ -5,23 +5,48 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
   
 ## Content Table
 
-- [Install](#install) 
-- [Config](#config) 
-- [Notes](#notes)   
+- [Install](#install)
+- [Config](#config)
+- [Notes](#notes)
 
 ## Install
 > SSH into the server running your HTTP website as a user with sudo privileges.
 > All packages must be installed from the "root" user
+1. Configuring a Static IP
+	1. Open the configuration file for your network interface.
 
+		```
+		vi /etc/sysconfig/network-scripts/ifcfg-eth0
+		```
+
+	2. Add the following settings to the file:
+		```
+		ONBOOT=yes
+		DHCP=static
+		```
+	3. Restarting the network interface
+		```
+		ifup eth0
+		```
 1. Actualización del servidor
 	```
 	yum update -y; yum install nano -y; yum install wget -y; yum install epel-release -y; yum install htop -y; yum install git -y; yum install nodejs -y; yum install unzip -y
-	``` 
-2. Install Nginx - Start, Add & Restart
+	```
+2. Open port 80 to nginx
+
+	```
+	firewall-cmd --permanent --zone=public --add-port=80/tcp
+	```
+
+	```
+	firewall-cmd --reload
+	```
+
+4. Install Nginx - Start, Add & Restart
 	```
 	yum install nginx -y; systemctl start nginx.service; systemctl enable nginx; systemctl restart nginx.service
 	```
-3. Disable SELINUX
+5. Disable SELINUX
 	1.  Open the  `/etc/selinux/config`:
 	    ``` nano /etc/selinux/config ```
 	    
@@ -55,7 +80,7 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 	    ```
         SELinux status: disabled
         ```
-4. Install FPM Complements
+5. Install FPM Complements
 	1. Download Pacakages
 		```
 		wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
@@ -69,7 +94,7 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 		```
 		yum install yum-utils -y
 		```
-5. Install PHP-FPM 7.4
+6. Install PHP-FPM 7.4
 	```
 	yum search yum-config-manager
 	```
@@ -96,11 +121,11 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 	listen.owner = nginx
 	listen.group = nginx
    ```
-6. Restart PHP
+7. Restart PHP
 	```
 	systemctl start php-fpm.service; systemctl enable php-fpm.service
 	```
-7. Install Composer
+8. Install Composer
     1. Once PHP CLI is installed, download the Composer installer script with:
         ```
         php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -135,7 +160,7 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
         composer
         ```
 
-8. Install SSL Letsencrypt [Source Guide](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
+9. Install SSL Letsencrypt [Source Guide](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx) (Optional)
     1. Install Certbot
     Run this command on the command line on the machine to install Certbot.
 
@@ -154,7 +179,7 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
         ```
         echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
         ```
-9. Add new user deploy
+10. Add new user deploy (Optional)
 	- Add new user
 		```
 		adduser deploy
