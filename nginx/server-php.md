@@ -28,6 +28,25 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 		```
 		ifup eth0
 		```
+2. Disable Firewall
+	1. First, stop the FirewallD service with
+
+	```
+	sudo systemctl stop firewalld
+	```
+
+	2. Disable the FirewallD service to start automatically on system boot:
+
+	```
+	sudo systemctl disable firewalld
+	```
+	
+	3. Mask the FirewallD service which will prevent the firewall from being started by other services:
+
+	````
+	sudo systemctl mask --now firewalld
+	```
+
 1. Actualización del servidor
 	```
 	yum update -y; yum install nano -y; yum install wget -y; yum install epel-release -y; yum install htop -y; yum install git -y; yum install nodejs -y; yum install unzip -y
