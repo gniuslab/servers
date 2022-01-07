@@ -54,6 +54,10 @@ Instalación y configuración de servidor ngnix de prueba y producción CentOS.
 1. Actualización del servidor
 
 	```
+	curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+	```
+
+	```
 	yum update -y; yum install nano -y; yum install wget -y; yum install epel-release -y; yum install htop -y; yum install git -y; yum install nodejs -y; yum install unzip -y
 	```
 
