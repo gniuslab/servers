@@ -78,6 +78,24 @@ pm2 startup
 pm2 save
 ```
 
+Verifica en el servidor:
+
+```bash
+which pm2
+ls -la $(which pm2)
+```
+Ambos deben mostrar /usr/local/bin/pm2
+
+Si muestra algo distinto a /usr/local, ejecuta:
+
+```bash
+npm config get prefix
+npm config set prefix /usr/local
+npm uninstall -g pm2
+npm install -g pm2
+which pm2
+```
+
 
 ## Configuración de Nginx
 
