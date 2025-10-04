@@ -73,7 +73,7 @@ npm install -g pm2
 ```bash
 cd /var/www/dominio.com/html
 mkdir -p logs
-pm2 start /usr/local/lsws/tickea.com/html/.output/server/index.mjs --name dominio.com
+pm2 start /usr/local/lsws/dominio.com/html/.output/server/index.mjs --name dominio.com
 pm2 startup
 pm2 save
 ```
