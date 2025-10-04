@@ -68,45 +68,23 @@ sudo -u www-data npm run build
 npm install -g pm2
 ```
 
-## Configuración de PM2
-
-```bash
-cat > /var/www/dominio.com/html/ecosystem.config.js << 'EOF'
-module.exports = {
-    apps: [{
-        name: 'nombre-app',
-        script: '.output/server/index.mjs',
-        user: 'www-data',
-        cwd: '/var/www/dominio.com/html',
-        instances: 'max',
-        exec_mode: 'cluster',
-        env: {
-            NODE_ENV: 'production',
-            PORT: 3000
-        },
-        error_file: '/var/www/dominio.com/html/logs/pm2-error.log',
-        out_file: '/var/www/dominio.com/html/logs/pm2-out.log',
-        log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
-        max_memory_restart: '1G'
-    }]
-}
-EOF
-```
-
 ## Iniciar Aplicación con PM2
 
 ```bash
 cd /var/www/dominio.com/html
 mkdir -p logs
-pm2 start ecosystem.config.js
+pm2 start /usr/local/lsws/tickea.com/html/.output/server/index.mjs --name dominio.com
 pm2 startup
 pm2 save
 ```
 
+
 ## Configuración de Nginx
 
 ```bash
-cat > /etc/nginx/sites-available/dominio.com << 'EOF'
+cat > /etc/nginx/sites-available/dominio.com
+
+```
 server {
     listen 80;
     server_name dominio.com www.dominio.com;
@@ -140,7 +118,6 @@ server {
         proxy_read_timeout 60s;
     }
 }
-EOF
 ```
 
 ## Activar Sitio
